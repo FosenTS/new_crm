@@ -1,12 +1,11 @@
 version: '3.8'
-
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "443:443"
     environment:
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -14,11 +13,12 @@ services:
       - DB_PASSWORD=postgres
       - DB_NAME=crm_db
       - JWT_SECRET=your-secret-key-here
-      - SERVER_PORT=8080
+      - SERVER_PORT=443
     depends_on:
       - postgres
     networks:
       - crm-network
+    restart: always
 
   postgres:
     image: postgres:14
@@ -32,6 +32,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - crm-network
+    restart: always
 
 volumes:
   postgres_data:

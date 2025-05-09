@@ -38,7 +38,13 @@ Content-Type: application/json
     "password": "string"
 }
 ```
-Response: `{ "token": "string" }`
+Response: 
+```json
+{
+    "token": "string",
+    "role": "employee" | "boss"
+}
+```
 
 ### Products
 
@@ -129,7 +135,7 @@ SERVER_PORT=8080
 docker-compose up --build
 ```
 
-The application will be available at `http://localhost:8080`
+The application will be available at `https://raffalda.com`
 
 ## Development
 
